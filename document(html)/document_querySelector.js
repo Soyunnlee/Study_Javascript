@@ -10,4 +10,4 @@ const title1 = document.querySelector(".hello h1")
 const title2 = document.querySelector(".hello h1:first-child")
 const title3 = document.querySelectorAll(".hello h1")
 
-console.log(title)
+console.dir(title) // event 등 property 를 출력해줌
