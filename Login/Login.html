@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Login.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <!-- classname 에 쓴것을 아이디에 다시 쓰면 안된다. -->
+    <form id="login-form">
+        <!-- input 자체적으로 최대 글자수를 15로 조절할수 있다. -->
+        <input 
+            required 
+            maxlength="15" 
+            type="text" 
+            placeholder="What is your name?"
+        />
+        <button>Log In</button>
+    </form>
+
+    <script src="Login.js"></script>
+</body>
+</html>
