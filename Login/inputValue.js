@@ -20,3 +20,5 @@ function onLoginClick(){
 
 loginBtn.addEventListener("click" , onLoginClick)
 
+// 이곳에서 작업한 것들은 html <form/> teg 와 <input/> teg 안의 required 로 대체할 수 있다.
+

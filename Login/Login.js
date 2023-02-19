@@ -1,22 +1,28 @@
-// const loginForm = document.getElementById("login-form");
-// doument 가 아닌 login?From 에서 바로 찾을수가 있다 
-// loginForm 이 document 를 담고 있기 때문.
-// 하지만 코드를 줄이기 위해 document 를 사용할 것이다.
-// const loginBtn = loginForm.querySelector("#login-form button");
 
+//Form submit event 방지 (새로고침 방지)
+const loginForm = document.querySelector("#login-form")
 const loginInput = document.querySelector("#login-form input");
-const loginBtn = document.querySelector("#login-form button");
-console.log(loginInput)
+const greeting = document.querySelector("#greeting")
 
-function onLoginClick(){
-    const userName = loginInput.value
-    if(userName === ""){
-        alert("please wirte your name");
-    } // html 에서 지원하는 input teg 자체의 required 로 대체할 수 있다.
-    else if(userName.length > 15){
-        alert("Your name is too long.")
-    }
+// hidden 이라는 css classname 을 저장해주었다.
+// 관습처럼 string 만 포함된 변수는 대문자로 표기하고 string 을 저장하고 싶을때 사용한다.
+const HIIDEN_CLASSNAME = "hidden"
+
+// onLoginSubmit() 소괄호 안에 들어가이쓴 값을 argument 라고 한다.
+// onLoginSubmit 이라는 function 이 하나의 argument 를 받도록 하고 그걸 Js 에 넘겨주고 있다.
+// 여기에 담긴 ()argument 는 submit 이라는 event 를 뜻한다.
+function onLoginSubmit(event){
+    //.preeventDefault 라는 function 은 event의 기본 행동이든지 발생되지 않도록 막는것을 담고있다.
+    event.preventDefault();
+    loginForm.classList.add(HIIDEN_CLASSNAME);
+    const username = loginInput.value;
+
+    greeting.classList.remove(HIIDEN_CLASSNAME);
+    greeting.innerText = `Hello ${username}`
+
 }
 
-loginBtn.addEventListener("click" , onLoginClick)
+
+
+loginForm.addEventListener("submit" , onLoginSubmit);
 
