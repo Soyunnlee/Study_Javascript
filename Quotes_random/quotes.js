@@ -39,3 +39,13 @@ const quotes = [
 
 const quote = document.querySelector("#quote span:first-child")
 const author = document.querySelector("#quote span:last-child")
+
+const todayQuote = quotes[Math.floor(Math.random() * quotes.length)]
+
+quote.innerText = todayQuote.quote
+author.innerText = todayQuote.author
+
+// console.log(quotes[Math.floor(Math.random() * 10)]) => 10을 quotes.length 로 대체함
+//console.log(quotes[Math.floor(Math.random() * quotes.length))
+
+//  Math.random() 에 *10 을 하면 0-10 사이의 숫자들을 얻을수 있다.
