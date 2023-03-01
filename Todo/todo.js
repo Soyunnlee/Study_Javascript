@@ -67,9 +67,21 @@ if(savedToDos !== null){
     // parsedTodos 는 array 라서 forEach 라는 것을 가지고 있다.
     // 여기서 forEach 가 function 을 실행하게 해준다.
     // 그 array 에 있는 각각의 item 에 대해 실행해준다.
+
+    // forEach 는 각각의 item 에 sayHello 를 실행시킨다.
     parsedToDos.forEach(sayHello);
 }
 
+// forEach 에서 item 을 넘겨받는다.
 function sayHello(item){
     console.log("this is the turn of ",item);
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    const button = document.createElement("button");
+
+    li.appendChild(span);
+    li.appendChild(button);
+    span.innerText = item;
+
+    toDoList.appendChild(li);  
 }
