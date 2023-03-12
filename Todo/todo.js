@@ -45,7 +45,7 @@ function handleTodoSubmit(event){
     // toDos 전역 배열저장소에 newTodo 를 넘겨준다(push)
     toDos.push(newTodo);
 
-    // painTodo 에 newTodo 값을 넘겨준다.
+    // paintTodo 에 newTodo 값을 넘겨준다.
     paintTodo(newTodo);
     // saveTodo 실행.
     saveTodo();
@@ -69,19 +69,11 @@ if(savedToDos !== null){
     // 그 array 에 있는 각각의 item 에 대해 실행해준다.
 
     // forEach 는 각각의 item 에 sayHello 를 실행시킨다.
-    parsedToDos.forEach(sayHello);
+    // parsedToDos.forEach(sayHello) 를 화살표 함수를 써서 funcrion 을 많이 생성하지 않아도 된다.
+    parsedToDos.forEach((item) => paintTodo(item));
 }
-
 // forEach 에서 item 을 넘겨받는다.
 function sayHello(item){
-    console.log("this is the turn of ",item);
-    const li = document.createElement("li");
-    const span = document.createElement("span");
-    const button = document.createElement("button");
-
-    li.appendChild(span);
-    li.appendChild(button);
-    span.innerText = item;
-
-    toDoList.appendChild(li);  
+    // console.log("this is the turn of ",item);
+    // paintTodo(item);
 }
