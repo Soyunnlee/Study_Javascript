@@ -2,7 +2,7 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
 
-const toDos = [];
+let toDos = [];
 
 const TODOS_KEY = "todos"
 
@@ -12,7 +12,10 @@ function saveTodo(){
 
 function deleteTodo(event){
     const li = event.target.parentElement;
+    toDos = toDos.filter((item)=> toDos.id !== parseInt(li.id))
     li.remove();
+    // 꼭 saveTodo 를 실행시켜주어야 한다
+    saveTodo()
 }
 
 function paintTodo(newTodo){
@@ -58,9 +61,4 @@ if(savedToDos !== null){
     const parsedToDos = JSON.parse(savedToDos);
 
     parsedToDos.forEach((item) => paintTodo(item));
-}
-
-function sayHello(item){
-    // console.log("this is the turn of ",item);
-    // paintTodo(item);
 }

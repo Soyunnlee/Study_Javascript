@@ -2,26 +2,24 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
 
-const toDos = [];
+// savedTodo (localstarage) 에 저장된 값이 있으면 보여줄 수 있도록 const 대신 let 을 쓴다.
+let toDos = [];
 
 const TODOS_KEY = "todos"
 
-function saveTodo(){
+function saveTodos(){
     // localStorage.setItem("todos",toDos)
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
-
 
 // x 버튼을 눌렀을떼 부모요소인 li 를 타겟으로 해서
 // li 를 삭제해준다.
 function deleteTodo(event){
     const li = event.target.parentElement;
-
-
-
-    console.log("dd", li.id)
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
     li.remove();
-    
+    // !!!!! saveTodos() 를 한번 더 불러야 한다는것을 잊지말자. !!!!!! // 
+    saveTodos();
 }
 
 function paintTodo(newTodo){
@@ -59,7 +57,7 @@ function handleTodoSubmit(event){
     // paintTodo 에 newTodo 값을 넘겨준다.
     paintTodo(newTodoObj);
     // saveTodo 실행.
-    saveTodo();
+    saveTodos();
 }
 
 toDoForm.addEventListener("submit" , handleTodoSubmit);
@@ -72,7 +70,8 @@ const savedToDos = localStorage.getItem(TODOS_KEY);
 if(savedToDos !== null){
     //'["d","v"]' 으로 출력되던 string 을 살아있는 javascript object,배열 로 바꿔준다.
     const parsedToDos = JSON.parse(savedToDos);
-    console.log(parsedToDos);
+    // 
+    toDos = parsedToDos;
 
     // javascript 는 array 에 있는 각각의 item 에 대해 function을 실행할 수 있게 햐준다.
     // parsedTodos 는 array 라서 forEach 라는 것을 가지고 있다.
