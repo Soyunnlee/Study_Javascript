@@ -26,11 +26,12 @@ function onGeoOk(position){
     // response 는 json으로 받아와야 한다.  
     fetch(url)
         .then(response => response.json())
-        .then((data) => {
-            const weatherContainer  = document.querySelector("h1#weather")
-            const name = data.name;
-            weatherContainer.innerText = (name)
-            const weather = data.weather[0].main;
+        .then((data) => {   
+            const city  = document.querySelector("#weather span:first-child")
+            const weather  = document.querySelector("#weather span:last-child")
+            city.innerText = data.name;
+            weather.innerText = data.weather[0].main;
+            console.log(data.name)
         });
 }
 

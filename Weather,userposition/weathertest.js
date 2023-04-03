@@ -1,7 +1,7 @@
 
 const API_KEY = '160d89b34edbb491a986e42383086c43'
 
-const printweather = document.getElementById("weather")
+const printweather = document.querySelector("#weather span:nth-child(1)")
 console.log(printweather)
 
 
